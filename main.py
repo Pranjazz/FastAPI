@@ -2,7 +2,20 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-#users route
-@app.get("/users/{user_id}")
-def get_user(user_id:int):
-    return {"user_id":user_id}
+#quert params
+@app.get("/users")
+def get_user(name: str = None):
+    return {"name":name}
+
+#query params default value
+@app.get("/products")
+def get_user(limit: int = 10):
+    return {"limit":limit}
+
+#query multiple params
+@app.get("/items")
+def get_user(name: str = None,price: int = 0):
+    return {
+        "name":name,
+        "PRICE":price
+        }
