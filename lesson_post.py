@@ -1,11 +1,16 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
+class User(BaseModel):
+    name: str
+    age:int
+
 #post api
 @app.post("/create_user")
-def create_user(name:str,age=int):
+def create_user(user:User):
     return{
-        "name":name,
-        "age":age
+        "message":"user created",
+        "data":user
     }
