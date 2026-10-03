@@ -2,6 +2,10 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+#quert params
+@app.get("/users")
+def get_user(name: str = None):
+    return {"name":name}
 
 #query params default value
 @app.get("/products")
