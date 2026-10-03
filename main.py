@@ -19,3 +19,8 @@ def get_user(name: str = None,price: int = 0):
         "name":name,
         "PRICE":price
         }
+
+#quert params
+"""@app.get("/users")
+def get_user(name: str = None):
+    return {"name":name}"""
