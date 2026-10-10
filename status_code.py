@@ -2,6 +2,18 @@ from fastapi import FastAPI , status , HTTPException
 
 app = FastAPI()
 
+class UserNotFoundException(Exception):
+    def __init__(self,name:str):
+        self.name = name
+
+@app.get("/user/{name}")
+def get_user(name:str):
+    if name!="pranjal":
+        raise UserNotFoundException (name)
+    return {
+        "name":"pranjal"
+    }
+
 @app.post("/create_user",status_code = status.HTTP_201_CREATED)
 def created_user():
     return {
